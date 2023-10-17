@@ -1,0 +1,17 @@
+version: '3'
+services:
+  srv1:
+    build: ./nodeserver
+    ports:
+    - "5001:7070"
+  srv2:
+    build: ./server2
+    ports:
+    - "5002:7071"
+  nginx:
+    build: ./nginx
+    ports:
+    - "8080:80"
+    depends_on:
+    - srv1
+    - srv2
